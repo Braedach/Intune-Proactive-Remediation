@@ -1,4 +1,4 @@
-﻿<#
+<#
    This is a trial detection script to determine errors in ASR and correct them
    There is a simple remediation script that is attached
    This script is to be placed in the Proactive Remediation of MEM.
@@ -23,16 +23,18 @@ Write-Output $regpath
 Write-Output $ASRSetting
 Write-Output $ASRSettingActual
 
-
-If ($ASRSetting = $ASRSettingActual)
-    {
-    Write-Output "String does match"
-    #Write-Output $ASRSettingActual
-    exit 0
-    }
-else
+try{
+    If ($ASRSetting = $ASRSettingActual)
+        {
+        Write-Output "String does match"
+        #Write-Output $ASRSettingActual
+        exit 0
+        }
+     }
+catch
     {
     Write-Output "String doesnt match"
     #Write-Output $ASRSettingActual
     exit 1
     }
+
