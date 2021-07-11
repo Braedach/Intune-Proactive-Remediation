@@ -1,4 +1,4 @@
-﻿<#
+<#
    This is a trial remediation script to determine errors in ASR and correct them
    There is a simple detection script that is attached
    This script is to be placed in the Proactive Remediation of MEM.
@@ -13,23 +13,17 @@
 
 #SET VARIABLES
 
-$regpath = "Registry::HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Policy Manager"
 
-
-#DEBUG VARIABLES
-
-Write-Output $regpath
 
 
 #ACTUAL CODE
 
-If (Test-Path -Path $regpath)
+try
     {
-    Write-Output "Exists fix it"
     Get-ScheduledTask | ? {$_.TaskName -eq ‘PushLaunch’} | Start-ScheduledTask
     exit 0
     }
-else
+catch
     {
-    Write-Output "Doesnt Exist"
+    Write-Error "Impossible Error"
     }
