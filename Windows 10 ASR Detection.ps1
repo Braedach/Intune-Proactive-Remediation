@@ -24,6 +24,7 @@ $RulesIdsArray = @()
 $RulesIdsArray += $RulesIds
 
 $counter = 0
+$Total = 0
 $TotalNotConfigured = 0
 $TotalAudit = 0
 $TotalBlock = 0
@@ -80,7 +81,8 @@ ForEach ($j in $RulesIds)
     }
 
 try{
-    If (($RulesIds).Count=16)
+    $Total=$RulesIds.Count
+    If ($Total -eq 16 -And $TotalNotConfigured -eq 0)
         {
         Write-Output "ASR Rules are compliant"
         #Write-Output $ASRSettingActual
