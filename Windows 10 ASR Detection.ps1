@@ -9,7 +9,8 @@
 
   Logic: If there are not 16 rules in total go straight into remediation
   
-  Script has been updated to create a log file on machine
+  Script has been updated to create a logfile on the machine
+  This logfile can then be pulled via Live response within the M365 Defender portal assuming it is on without resorting to Diagnostics
 
 #>
 
