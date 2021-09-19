@@ -148,16 +148,15 @@ ForEach ($j in $RulesIds)
 
 try{
     $Total=$RulesIds.Count
-    If ($Total -eq 16 -And $TotalNotConfigured -eq 0)
+    If ($Total == 16 -And $TotalNotConfigured == 0)
         {
         "ASR Rules are compliant" | Tee-Log -FilePath $LogName -Silent:$Passthru
         exit 0
         }
+    
      }
 catch
     {
-    "ASR Rules are not compliant" | Tee-Log -FilePath $LogName -Silent:$Passthru
-    exit 1
+     "ASR Rules are not compliant - group policy update called" | Tee-Log -FilePath $LogName -Silent:$Passthru
+      exit 1
     }
-
-
