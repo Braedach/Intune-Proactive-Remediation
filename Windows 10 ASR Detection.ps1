@@ -147,16 +147,20 @@ ForEach ($j in $RulesIds)
     }
 
 try{
-    $Total=$RulesIds.Count
-    If ($Total == 16 -And $TotalNotConfigured == 0)
+    
+    If ($TotalBlock -eq 16)
         {
         "ASR Rules are compliant" | Tee-Log -FilePath $LogName -Silent:$Passthru
         exit 0
         }
-    
+    else
+        {
+        "ASR Rules are not compliant - group policy update called" | Tee-Log -FilePath $LogName -Silent:$Passthru
+        exit 1
+        }
      }
 catch
     {
-     "ASR Rules are not compliant - group policy update called" | Tee-Log -FilePath $LogName -Silent:$Passthru
+     "ASR Rules error - refer to system admin" | Tee-Log -FilePath $LogName -Silent:$Passthru
       exit 1
     }
